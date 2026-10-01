@@ -1,40 +1,103 @@
-# ScoutPay
+Build a polished mobile-first (android .apk) web app called ScoutPay.
 
-**Verified work. Trusted proof. Stablecoin rewards.**
+ScoutPay is a DePIN + crypto payments app where organizations post real-world verification tasks and users earn stablecoin rewards after submitting proof such as GPS location, photo, timestamp, sensor result, and a short note.
 
-ScoutPay turns real-world verification into a trusted crypto-native work network. Sponsors lock rewards in escrow, contributors submit location-based proof, AI helps validate submissions, and approved workers receive instant stablecoin payments.
+The app should feel like a serious hackathon MVP/startup product, not a landing page. Build the usable product first.
 
-## Links
+Core screens:
+1. Dashboard
+- Show user wallet status, total earned, pending rewards, completed tasks, reputation score.
+- Add a “Connect Wallet” button.
+- Show quick stats: Available Tasks, Pending Review, Earned USDC, Reputation.
 
-- **Live app:** https://scoutpay.lovable.app
-- **Demo video:** https://youtu.be/l9NlpKf7nuY
+2. Task Map / Task List
+- Show nearby verification tasks in cards and on a simple map-style panel.
+- Each task should include title, category, location, reward in USDC, urgency, required proof, and deadline.
+- Example tasks:
+  - Verify EV charger status
+  - Check public Wi-Fi speed
+  - Confirm shelter capacity
+  - Report damaged road sign
+  - Verify crypto payment accepted by merchant
+- Add filters for DePIN, Payments, Infrastructure, Humanitarian, Connectivity.
 
-## What it is
+3. Task Detail
+- Show full instructions, reward amount, proof requirements, sponsor name, and estimated time.
+- Add button “Start Task”.
+- Show escrow status: “Reward locked in smart contract”.
+- Show required proof checklist:
+  - GPS location
+  - Photo
+  - Timestamp
+  - Short note
+  - Optional sensor/speed result
 
-A mobile-first web app where organizations post real-world verification tasks (check an EV charger, map Wi-Fi speed, confirm shelter capacity) and contributors earn USDC after submitting proof: GPS location, photo, timestamp, an optional sensor reading, and a short note.
+4. Submit Proof
+- Let user upload/take a photo.
+- Show detected GPS coordinates, timestamp, and note field.
+- Add mock AI validation result:
+  - Location match
+  - Image relevance
+  - Duplicate check
+  - Risk score
+- Button: “Submit for Review”.
 
-## Core flows
+5. Review / Validation
+- Show pending submissions.
+- Include AI proof score, photo thumbnail, submitted note, task location, and fraud risk.
+- Reviewer can Approve or Reject.
+- If approved, show “USDC released to worker wallet”.
 
-1. **Dashboard** — wallet status, earned USDC, pending review, reputation score.
-2. **Tasks** — map-style panel plus task cards, filtered by DePIN, Payments, Infrastructure, Humanitarian, Connectivity.
-3. **Task detail** — instructions, reward, sponsor, escrow status ("Reward locked in smart contract"), proof checklist.
-4. **Submit proof** — photo upload, auto-detected GPS + timestamp, note, mock AI validation (location match, image relevance, duplicate check, risk score).
-5. **Review** — approve or reject submissions; approval releases USDC to the worker wallet with a transaction and proof hash.
-6. **Reputation** — trust score, approval rate, total earned, and badges (Reliable Verifier, Connectivity Mapper, Emergency Helper, Merchant Scout).
-7. **Sponsor dashboard** — create campaigns, track budget vs. escrowed USDC, review submitted proofs.
+6. Reputation
+- Show worker profile with completed tasks, approval rate, total earned, badges, and trust score.
+- Badges:
+  - Reliable Verifier
+  - Connectivity Mapper
+  - Emergency Helper
+  - Merchant Scout
 
-## Demo mode
+7. Sponsor Dashboard
+- Let an organization create a task campaign.
+- Inputs: task title, category, location, reward, number of verifications needed, deadline, proof requirements.
+- Show campaign budget and total USDC escrowed.
+- Show submitted proofs and status.
 
-A toggle in the header seeds the guided flow: connect wallet → pick "Verify EV charger status" → start → submit proof → AI validates → approve → USDC released → reputation ticks up.
+Crypto/Web3 behavior:
+- Use mock wallet connection if real wallet integration is not available.
+- Show wallet address after connection.
+- Simulate USDC escrow and payout.
+- Show transaction hash after approval.
+- Show on-chain proof hash for each approved submission.
+- Make clear this is a working MVP simulation that can later connect to Solana/EVM smart contracts.
 
-## Tech
+Design:
+- Clean, modern, trustworthy.
+- Mobile-first but responsive on desktop.
+- Use a professional color palette, not too dark and not purple-heavy.
+- Use cards only for task items and submissions.
+- Use tabs or sidebar navigation: Dashboard, Tasks, Submit Proof, Review, Sponsor, Reputation.
+- Use icons for wallet, map, camera, shield, payment, reputation.
+- Add subtle animations when tasks are approved or payment is released.
+- Keep text concise and practical.
 
-- TanStack Start (React 19, Vite, Tailwind CSS v4)
-- All state in the browser (React context + local storage) — no backend required
-- Wallet connection, escrow, payouts, and hashes are realistic simulations, ready to swap for real Solana/EVM contracts
+Important UX:
+- The first screen should be the app dashboard, not a marketing hero.
+- Include realistic sample data.
+- Include empty/loading/error states.
+- Prevent text overflow on mobile.
+- Add a demo mode toggle so judges can understand the flow quickly.
 
-## Documents
+Demo flow:
+1. Connect wallet.
+2. Choose “Verify EV charger status”.
+3. Start task.
+4. Submit photo/GPS/note proof.
+5. AI validates proof.
+6. Reviewer approves.
+7. USDC reward is released.
+8. Reputation score increases.
 
-- `ScoutPay_Project_Description.pdf` — full project description
-- `ScoutPay_Pitch_Deck.pptx` — pitch slides
-- `ScoutPay_Product_Walkthrough_v4.mp4` — narrated product walkthrough
+Add a short “Why ScoutPay?” section inside the app, not as the main page:
+“ScoutPay turns real-world verification into a trusted crypto-native work network. Sponsors lock rewards in escrow, contributors submit location-based proof, AI helps validate submissions, and approved workers receive instant stablecoin payments.”
+
+Make it production-looking enough for a Colosseum crypto hackathon submission.
